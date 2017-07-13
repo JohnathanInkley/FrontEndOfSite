@@ -1,0 +1,22 @@
+0) In account settings, if reply is good then say so
+1) Have token given to client that they add when they register. If token not in database, account creation denied
+2) Hash password when it goes to server
+
+-Big priority-
+- Backend server communication
+- API design (for example specify time intervals and 2 times and get data between). Real time data got and displayed from sensors
+- basic tool to add sites, add clients and add users for each client
+Needs: editable sections where users can add content and pages with no technical knowledge - find solution that let's this happen
+
+-Medium priority-
+(probably first two months of july)
+- google maps stuff (sensor placement to get lat and long and attach to a IPv6 addresses)
+-Low priority-
+August data analysis
+
+
+User {
+ClientName:
+UserName:
+ListOfSitesHAsAccessTo: - big list generated for client, admin can narrow down
+}
