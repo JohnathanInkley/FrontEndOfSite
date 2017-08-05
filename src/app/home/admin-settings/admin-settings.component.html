@@ -1,0 +1,16 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Admin settings</h1>
+    <p>
+      <a (click)="goBack()">Back</a>
+    </p>
+  </div>
+</div>
+<div class="container">
+  <div *ngFor="let user of users"  class="col-1-4">
+    <div class="module site">
+      <app-user-site-permissions [username]="user" [sites]="sites"></app-user-site-permissions>
+    </div>
+  </div>
+</div>
+

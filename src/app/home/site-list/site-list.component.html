@@ -1,0 +1,8 @@
+<div class="container">
+  <h3>Your sites</h3>
+  <a *ngFor="let site of sites" [routerLink]="['/site',site]" class="col-1-4">
+    <div class="module site">
+      <h4>{{site}}</h4>
+    </div>
+  </a>
+</div>

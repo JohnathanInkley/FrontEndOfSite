@@ -1,0 +1,55 @@
+<div class="jumbotron">
+  <div class="container">
+    <div *ngIf="site">
+      <h1>Stats for {{site}}</h1>
+    </div>
+    <p>
+      <a (click)="goBack()">Back</a>
+      <span style="display:inline-block; width: 20px;"></span>
+      Other things about site
+      <span style="display:inline-block; width: 20px;"></span>
+      Even more things you can click
+    </p>
+  </div>
+</div>
+<div class="container">
+  <div *ngIf="sensorNames">
+    <app-dropdown-list [textForDropdown]="sensorDropdownTitle" [dropdownOptions]="sensorNames"
+                       (select)="setChosenSensor($event)" ></app-dropdown-list>
+  </div>
+  <div *ngIf="labelNames">
+    <app-dropdown-list [textForDropdown]="labelDropdownTitle" [dropdownOptions]="labelNames"
+                       (select)="setChosenLabel($event)"></app-dropdown-list>
+  </div>
+  <p></p>
+  <div *ngIf="chosenLabel" class="form-group">
+    <form name="form" (ngSubmit)="submitTimes()">
+      <div class="form-group">
+        <label for="startDateLabel" id="startDateLabel">Start date</label>
+        <input [(ngModel)]="startDate" name="startDate" placeholder="YYYY-MM-DD">
+      </div>
+      <div class="form-group">
+        <label for="startTimeLabel" id="startTimeLabel">Start time</label>
+        <input [(ngModel)]="startTime" name="startTime" placeholder="HH:MM:SS">
+      </div>
+      <div class="form-group">
+        <label for="endDateLabel" id="endDateLabel">End date</label>
+        <input [(ngModel)]="endDate" name="endDate" placeholder="YYYY-MM-DD">
+      </div>
+      <div class="form-group">
+        <label for="endTimeLabel" id="endTimeLabel">End time</label>
+        <input [(ngModel)]="endTime" name="endTime"  placeholder="HH:MM:SS">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary">Get data</button>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="dataReady" class="d3-chart" id="chart1area">
+    <br/>
+    <app-line-chart [data]="chartData" [name]="chart1name"></app-line-chart>
+    <br/>
+  </div>
+  <br/>
+</div>

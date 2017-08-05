@@ -1,0 +1,57 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{pageTitle}}</h1>
+  </div>
+</div>
+<div class="container">
+  <form name="form" (ngSubmit)="saveChanges()">
+    <div class="form-group">
+      <label for="firstName" id="firstName"></label>
+      <md-input-container class="example-full-width">
+      <input mdInput [(ngModel)]="currentUser.firstName" name="firstName" placeholder="First Name">
+      </md-input-container>
+    </div>
+    <div class="form-group">
+      <label for="lastName" id="lastName"></label>
+      <md-input-container class="example-full-width">
+      <input mdInput [(ngModel)]="currentUser.lastName" name="lastName" placeholder="Last name">
+      </md-input-container>
+    </div>
+    <div class="form-group">
+      <label for="email" id="email"></label>
+      <md-input-container class="example-full-width">
+      <input mdInput [(ngModel)]="currentUser.email" name="email" placeholder="Email">
+      </md-input-container>
+    </div>
+    <div class="form-group">
+      <label for="username" id="username"></label>
+      <md-input-container class="example-full-width">
+      <input mdInput [(ngModel)]="currentUser.username" name="username" placeholder="Username">
+      </md-input-container>
+    </div>
+    <br/>
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary">Save changes</button>
+      <a [routerLink]="['']" class="btn btn-link">Cancel</a>
+    </div>
+  </form>
+  <form name="passwordForm" (ngSubmit)="savePasswordChanges()">
+    <div class="form-group">
+      <label for="oldPassword" id="oldPassword"></label>
+      <md-input-container class="example-full-width">
+      <input mdInput [(ngModel)]="oldPassword" name="oldPassword" placeholder="Old password">
+      </md-input-container>
+    </div>
+    <div class="form-group">
+      <label for="newPassword" id="newPassword"></label>
+      <md-input-container class="example-full-width">
+      <input mdInput [(ngModel)]="newPassword" name="newPassword" placeholder="New password">
+      </md-input-container>
+    </div>
+    <br/>
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary">Update password</button>
+      <a [routerLink]="['']" class="btn btn-link">Cancel</a>
+    </div>
+  </form>
+</div>

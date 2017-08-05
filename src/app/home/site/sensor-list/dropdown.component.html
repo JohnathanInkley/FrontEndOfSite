@@ -1,0 +1,6 @@
+<div class="container">
+  <h4>{{textForDropdown}}</h4>
+  <md-select [(ngModel)]="currentOption" (ngModelChange)="selectItem(currentOption)">
+    <md-option *ngFor="let value of dropdownOptions" [value]="value">{{value}}</md-option>
+  </md-select>
+</div>

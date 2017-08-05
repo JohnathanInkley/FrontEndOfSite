@@ -26,6 +26,12 @@ import {SensorLabelGetterService} from "./home/site/sensor-list/sensor-label-get
 import {SensorDataGetterService} from "./home/site/sensor-list/sensor-data-getter.service";
 import { AdminSettingsComponent } from './home/admin-settings/admin-settings.component';
 import { UserSitePermissionsComponent } from './home/admin-settings/user-site-permissions/user-site-permissions.component';
+import {
+  MaterialModule, MdRadioModule, MdSelectModule, MdInputModule,
+  MdDatepickerModule
+} from "@angular/material";
+import { IndividualSitePermissionComponent } from './home/admin-settings/user-site-permissions/individual-site-permission/individual-site-permission.component';
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -40,10 +46,17 @@ import { UserSitePermissionsComponent } from './home/admin-settings/user-site-pe
     LineChartComponent,
     DropdownComponenent,
     AdminSettingsComponent,
-    UserSitePermissionsComponent
+    UserSitePermissionsComponent,
+    IndividualSitePermissionComponent
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
+    MdRadioModule,
+    MdSelectModule,
+    MdInputModule,
+    MdDatepickerModule,
+    NoopAnimationsModule,
     FormsModule,
     HttpModule,
     routing

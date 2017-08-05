@@ -1,0 +1,14 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Hello {{currentUser.firstName}}</h1>
+    <a [routerLink]="['/account-settings']">Account settings</a>
+    <span *ngIf="isAdmin === true" style="display:inline-block; width: 1em;"></span>
+    <a *ngIf="isAdmin === true" [routerLink]="['/admin-settings']">Admin settings</a>
+    <span style="display:inline-block; width: 1em;"></span>
+    <a [routerLink]="['/login']">Logout</a>
+  </div>
+</div>
+<div>
+  <app-site-list></app-site-list>
+  <br/>
+</div>

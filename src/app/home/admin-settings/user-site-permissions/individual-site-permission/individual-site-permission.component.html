@@ -1,0 +1,5 @@
+<p>{{site}}</p>
+<md-radio-group name="{{username}}{{site}}" [disabled]="isDisabled" [(ngModel)]="value" (change)="setChoice(value)">
+  <md-radio-button [value]="true">yes</md-radio-button>
+  <md-radio-button [value]="false">no</md-radio-button>
+</md-radio-group>
