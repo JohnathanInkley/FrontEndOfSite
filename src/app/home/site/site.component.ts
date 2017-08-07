@@ -17,8 +17,7 @@ export class SiteComponent implements OnInit {
 
   dataReady: boolean;
   chartData: Array<any>;
-  chartData1: Array<any>;
-  chart1name: string = 'chart1';
+  chartLabels: Array<any>;
 
   sensorDropdownTitle: string = "Select sensor";
   sensorNames: string[];
@@ -86,8 +85,9 @@ export class SiteComponent implements OnInit {
       .then(data => {
         console.log(data);
         this.chartData = [];
+        this.labelNames = [];
         for (let i = 1; i < data.length; i++) {
-          this.chartData.push([i, +(data[i - 1])["value"]]);
+          this.chartData.push([(data[i - 1])["timestamp"], +(data[i - 1])["value"]]);
         }
       });
     this.dataReady = true;

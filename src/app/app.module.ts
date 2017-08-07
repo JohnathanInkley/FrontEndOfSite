@@ -32,6 +32,8 @@ import {
 } from "@angular/material";
 import { IndividualSitePermissionComponent } from './home/admin-settings/user-site-permissions/individual-site-permission/individual-site-permission.component';
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { Ng2LineChartComponent } from './stats/charts/ng2-line-chart/ng2-line-chart.component';
 
 @NgModule({
   declarations: [
@@ -47,9 +49,11 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
     DropdownComponenent,
     AdminSettingsComponent,
     UserSitePermissionsComponent,
-    IndividualSitePermissionComponent
+    IndividualSitePermissionComponent,
+    Ng2LineChartComponent,
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
     MaterialModule,
     MdRadioModule,

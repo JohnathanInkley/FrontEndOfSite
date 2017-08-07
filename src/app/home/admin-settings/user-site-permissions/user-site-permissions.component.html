@@ -1,6 +1,8 @@
 <div layout="row">
   <h3>{{username}}</h3>
-    <div *ngFor="let site of sites"  class="col-1-4" >
+  <div *ngFor="let site of sites"  class="col-1-4" >
+    <div *ngIf="site">
       <app-individual-site-permission (select)="setPermissions($event, username, site)" [username]="username" [site]="site"></app-individual-site-permission>
     </div>
+  </div>
 </div>
