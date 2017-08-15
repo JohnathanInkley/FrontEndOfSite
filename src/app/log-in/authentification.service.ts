@@ -24,6 +24,7 @@ export class AuthentificationService {
 
   logout() {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('jwt');
   }
 
 

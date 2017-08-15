@@ -22,10 +22,17 @@ export class SiteComponent implements OnInit {
   sensorDropdownTitle: string = "Select sensor";
   sensorNames: string[];
   chosenSensor: string;
+  sensorsAndLocations: Array<any>;
 
   labelDropdownTitle: string = "Select label";
   labelNames: string[];
   chosenLabel: string;
+
+  analysisDropdownTitle: string = "Select analysis";
+  analysisNames: string[] = ["raw", "mean", "standard deviation"];
+  chosenAnalysis: string;
+  interval: string = "";
+  modulo: string = "";
 
   startDate: string;
   startTime: string;
@@ -45,6 +52,7 @@ export class SiteComponent implements OnInit {
     this.route.params.switchMap((params: Params) => this.site = params['siteName']).subscribe();
     this.generateData();
     this.getSensorList();
+    this.getSensorLocations()
   }
 
   private generateData() {
@@ -58,6 +66,13 @@ export class SiteComponent implements OnInit {
   private getSensorList() {
     this.sensorListService.getSensorsForSite(this.site)
       .then(sensors => this.sensorNames = sensors);
+  }
+
+  private getSensorLocations() {
+    this.sensorListService.getSensorsAndLocationsForSite(this.site)
+      .then(sensorsAndLocations => {
+        this.sensorsAndLocations = sensorsAndLocations;
+      });
   }
 
   setChosenSensor(event) {
@@ -74,9 +89,16 @@ export class SiteComponent implements OnInit {
     this.chosenLabel = event;
   }
 
+  setAnalysisFormat(event) {
+    this.chosenAnalysis = event;
+  }
+
   submitTimes() {
     this.sensorDataService.getDataForLabelAndSensor(this.site,
       this.chosenSensor,
+      this.chosenAnalysis,
+      this.interval,
+      this.modulo,
       this.chosenLabel,
       this.startDate,
       this.startTime,

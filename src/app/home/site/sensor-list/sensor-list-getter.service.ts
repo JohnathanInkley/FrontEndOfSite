@@ -11,4 +11,10 @@ export class SensorListGetterService {
     .map(response => response.json())
     .toPromise();
   }
+
+  getSensorsAndLocationsForSite(siteName: string): Promise<string[]>  {
+    return this.http.get('/api/sites/' + siteName + '/sensorsAndLocations')
+      .map(response => response.json())
+      .toPromise();
+  }
 }

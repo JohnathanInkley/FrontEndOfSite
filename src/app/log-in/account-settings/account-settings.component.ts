@@ -31,13 +31,14 @@ export class AccountSettingsComponent implements OnInit {
     this.userService.update(this.currentUser).subscribe(
       data => {
         this.alertService.success('Changes saved', true);
-        localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-        localStorage.setItem('jwt', data.token);
+        let user = data;
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        localStorage.setItem('jwt', user.token);
         this.router.navigate(['']);
       },
       error => {
         console.log("BAD STUFF");
-        this.alertService.error(error);
+        this.alertService.error('Could not update user details');
         this.loading = false;
       }
     );

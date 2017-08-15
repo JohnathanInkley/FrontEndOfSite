@@ -31,18 +31,20 @@ export class UserService {
       JSON.stringify({oldPassword: oldPasswordVal, newPassword: newPasswordVal}),
       this.options
     ).map((response: Response) => {
+      let user = response.json();
+      if (user && user.token) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        localStorage.setItem('jwt', user.token);
+      }
       return (response.statusText === 'OK');
     });
   }
 
-  delete(id: number) {
-    return this.http.delete('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
-  }
-
   private jwt() {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let jwt = localStorage.getItem('jwt');
     if (currentUser && currentUser.token) {
-      let headers = new Headers({'Authorization': 'Bearer ' + currentUser.token});
+      let headers = new Headers({'Authorization': 'Bearer ' + jwt});
       return new RequestOptions({headers: headers});
     }
   }

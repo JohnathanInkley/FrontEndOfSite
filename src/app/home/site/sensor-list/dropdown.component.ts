@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 
 @Component({
   selector: 'app-dropdown-list',
@@ -6,11 +6,13 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./dropdown.component.css']
 })
 
-export class DropdownComponenent implements OnInit {
+export class DropdownComponenent implements OnInit, OnChanges {
   @Input()
   textForDropdown: string;
   @Input()
   dropdownOptions: string[];
+  @Input()
+  chosenDefaultOption: string;
 
   @Output()
   select: EventEmitter<string> = new EventEmitter<string>();
@@ -20,6 +22,10 @@ export class DropdownComponenent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  ngOnChanges() {
+    this.currentOption = this.chosenDefaultOption;
+  }
 
   selectItem(value) {
     console.log('option is ' + value);

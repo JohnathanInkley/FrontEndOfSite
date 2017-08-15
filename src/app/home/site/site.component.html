@@ -12,17 +12,32 @@
     </p>
   </div>
 </div>
+<div *ngIf="sensorsAndLocations">
+  <app-map-of-sensors [listOfSensors]="sensorsAndLocations" (select)="setChosenSensor($event)"></app-map-of-sensors>
+</div>
 <div class="container">
   <div *ngIf="sensorNames">
     <app-dropdown-list [textForDropdown]="sensorDropdownTitle" [dropdownOptions]="sensorNames"
-                       (select)="setChosenSensor($event)" ></app-dropdown-list>
+                       (select)="setChosenSensor($event)" [chosenDefaultOption]="chosenSensor"></app-dropdown-list>
   </div>
   <div *ngIf="labelNames">
     <app-dropdown-list [textForDropdown]="labelDropdownTitle" [dropdownOptions]="labelNames"
                        (select)="setChosenLabel($event)"></app-dropdown-list>
   </div>
+  <div *ngIf="chosenLabel">
+    <app-dropdown-list [textForDropdown]="analysisDropdownTitle" [dropdownOptions]="analysisNames"
+                       (select)="setAnalysisFormat($event)"></app-dropdown-list>
+    <div *ngIf="chosenAnalysis != 'raw'">
+      <md-input-container class="example-full-width">
+        <input mdInput [(ngModel)]="interval" name="interval" placeholder="Interval (ms)">
+      </md-input-container>
+      <md-input-container class="example-full-width">
+        <input mdInput [(ngModel)]="modulo" name="modulo" placeholder="modulo">
+      </md-input-container>
+    </div>
+  </div>
   <p></p>
-  <div *ngIf="chosenLabel" class="form-group">
+  <div *ngIf="chosenAnalysis" class="form-group">
     <form name="form" (ngSubmit)="submitTimes()">
       <div class="form-group">
         <label for="startDateLabel" id="startDateLabel">Start date</label>

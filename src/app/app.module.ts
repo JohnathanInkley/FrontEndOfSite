@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
@@ -34,6 +34,8 @@ import { IndividualSitePermissionComponent } from './home/admin-settings/user-si
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { Ng2LineChartComponent } from './stats/charts/ng2-line-chart/ng2-line-chart.component';
+import {AgmCoreModule} from "@agm/core";
+import { MapOfSensorsComponent } from './home/site/map-of-sensors/map-of-sensors.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { Ng2LineChartComponent } from './stats/charts/ng2-line-chart/ng2-line-ch
     UserSitePermissionsComponent,
     IndividualSitePermissionComponent,
     Ng2LineChartComponent,
+    MapOfSensorsComponent,
   ],
   imports: [
     ChartsModule,
@@ -63,7 +66,10 @@ import { Ng2LineChartComponent } from './stats/charts/ng2-line-chart/ng2-line-ch
     NoopAnimationsModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCaqMn0agogKey-9jmBGlMyNk0GXhfVcHg'
+    })
   ],
   providers: [
     customHttpProvider,
@@ -76,6 +82,7 @@ import { Ng2LineChartComponent } from './stats/charts/ng2-line-chart/ng2-line-ch
     SensorLabelGetterService,
     SensorDataGetterService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:  [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
