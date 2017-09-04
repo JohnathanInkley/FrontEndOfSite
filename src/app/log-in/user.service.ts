@@ -31,11 +31,6 @@ export class UserService {
       JSON.stringify({oldPassword: oldPasswordVal, newPassword: newPasswordVal}),
       this.options
     ).map((response: Response) => {
-      let user = response.json();
-      if (user && user.token) {
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        localStorage.setItem('jwt', user.token);
-      }
       return (response.statusText === 'OK');
     });
   }

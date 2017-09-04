@@ -7,7 +7,7 @@ export class AuthentificationService {
 
   constructor(private http: Http) { }
 
-  login(username: string, password: string) {
+    login(username: string, password: string) {
     console.log(JSON.stringify({username: username, password: password}));
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });

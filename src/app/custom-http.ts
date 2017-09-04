@@ -40,6 +40,7 @@ export class CustomHttp extends Http {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let jwt = localStorage.getItem('jwt');
     if (currentUser && jwt) {
+      options.headers.delete('Authorization');
       options.headers.append('Authorization', 'Bearer ' + jwt);
     }
 
